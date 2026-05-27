@@ -1,12 +1,13 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=F80000&height=160&section=header&text=bases-datos&fontSize=34&fontColor=FFFFFF&fontAlignY=40&desc=Bases%20de%20Datos%20%7C%20UAH%202025-26&descAlignY=60&descColor=FFCCCC" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=F80000&height=160&section=header&text=bases-datos&fontSize=30&fontColor=FFFFFF&fontAlignY=40&desc=BD%20%7C%20UAH%202025-26&descAlignY=60&descColor=FFCCCC" width="100%"/>
 
 <div align="center">
 
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-1D9E75?style=for-the-badge)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-1D9E75?style=for-the-badge)
 ![UAH](https://img.shields.io/badge/UAH-GII-085041?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-1D9E75?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-5DCAA5?style=for-the-badge)
 
 </div>
 
@@ -14,64 +15,76 @@
 
 ## About
 
-**Asignatura:** Bases de Datos · UAH GII · Curso 2025-26
+**Asignatura:** Bases de Datos &middot; UAH GII &middot; Curso 2025-26
 
-Relational database design and implementation: ER modelling, SQL querying, PL/SQL programming, triggers, user management and Python database connectivity.
+Relational database design and implementation. From Entity-Relationship modelling to SQL DDL/DML, constraints, triggers and role-based access control — applied to a real-world Formula 1 historical dataset (589 K lap records).
 
 ---
 
 ## Topics covered
 
-| Topic | Content |
+| Block | Content |
 |-------|---------|
-| Relational model | ER design, normalisation (1NF, 2NF, 3NF, BCNF) |
-| SQL | SELECT, JOIN, subqueries, aggregations, window functions |
-| PL/SQL | Procedures, functions, cursors, exception handling |
-| Triggers | BEFORE/AFTER, row-level, audit triggers, business logic |
-| Users and security | RBAC, GRANT/REVOKE, role hierarchy |
-| Transactions | COMMIT, ROLLBACK, isolation levels, ACID properties |
-| Python connector | cx_Oracle, parameterised queries, connection pooling |
+| Data modelling | Data dictionary, Extended ER diagram, semantic assumptions, cardinalities |
+| Relational model | ER-to-relational mapping, primary keys, foreign keys, normalisation |
+| SQL DDL | `CREATE SCHEMA`, `CREATE TABLE`, FK constraints, `ON DELETE`/`ON UPDATE` rules |
+| Bulk loading | `COPY` from CSV, temp schema → clean schema ETL, type casting, NULL handling |
+| SQL DML | `SELECT`, `JOIN`, aggregates (`COUNT`, `SUM`, `MAX`, `MIN`), subqueries, `WITH`, views |
+| Triggers | Audit trigger (INSERT/UPDATE/DELETE log with JSONB), points counter trigger (Upsert) |
+| RBAC | Roles (`admin`, `gestor`, `analista`, `invitado`), `GRANT`/`REVOKE`, schema-level permissions |
+| Python + DB | `psycopg2` connection, parameterised queries, role-aware interactive menu |
 
 ---
 
 ## Practices
 
-| # | Name | Description |
-|---|------|-------------|
-| PL1 | ER design | Relational model design and DDL creation |
-| PECL2 | [f1-database](./pecl2-f1/) | F1 relational DB with 589K lap records, 11 tables, complex queries, audit triggers, RBAC roles and Python connector |
+| # | Name | Description | Stack |
+|---|------|-------------|-------|
+| PL1 | [f1-database](./pl1-f1-database/) | F1 database design: EER diagram, relational model, PostgreSQL DDL with two-phase ETL (PL1temp → pl1final), 10 CSV files, 589 K lap records, FK constraints | PostgreSQL · SQL |
+| PL2 | [f1-queries](./pl2-f1-queries/) | 11 complex SQL queries (JOINs, aggregates, subqueries, CTEs, views), audit + points triggers, 4-role RBAC and Python `psycopg2` client with permission-aware menu | PostgreSQL · Python · SQL |
 
 ---
 
-## Database stats (F1 practice)
+## Database stats (F1 dataset)
 
 | Table | Records |
 |-------|---------|
 | circuitos | 77 |
 | temporadas | 75 |
-| escuderias | 212 |
+| escuderías | 212 |
 | pilotos | 861 |
-| gps | 1,125 |
-| pilotos_corren_gps | 26,685 |
-| pilotos_califican_gps | 10,494 |
+| grandes premios | 1,125 |
+| resultados | 26,685 |
+| clasificaciones | 10,494 |
 | vueltas | 589,081 |
-| pit_stops | 11,371 |
+| pit stops | 11,371 |
 
 ---
 
-## RBAC roles
+## Project structure
 
-| Role | Permissions |
-|------|-------------|
-| admin | Full DDL + DML |
-| gestor | DML only (no DDL) |
-| analista | SELECT all tables |
-| invitado | SELECT results, pilots, circuits — no lap times, no pit stops |
+```
+bases-datos/
+├── pl1-f1-database/
+│   ├── PL1_base_de_datos_25_26.pdf      # Practice guide
+│   └── PECL1_Nogal_Buchanan-2-9.pdf     # Submitted report
+└── pl2-f1-queries/
+    ├── Pl2_base_de_datos_25_26.pdf       # Practice guide
+    └── PECL2_DelNogal_Buchanan-2-9.pdf   # Submitted report
+```
+
+---
+
+## Authors
+
+| Name | DNI |
+|------|-----|
+| Daniel Del Nogal Buchanan | 54010299C |
 
 ---
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=F80000&height=100&section=footer" width="100%"/>
 
-*Bases de Datos · UAH GII · 2025-26*
+*Bases de Datos &middot; UAH GII &middot; 2025-26*
 </div>
