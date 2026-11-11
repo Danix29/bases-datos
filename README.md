@@ -77,9 +77,9 @@ bases-datos/
 
 ## Authors
 
-| Name | DNI |
-|------|-----|
-| Daniel Del Nogal Buchanan | — |
+| Name |
+|------|
+| Daniel Del Nogal Buchanan |
 
 ---
 
